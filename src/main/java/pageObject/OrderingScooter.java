@@ -1,4 +1,4 @@
-package ru.yandex.praktikum.sprint_4;
+package pageObject;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -11,9 +11,9 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 public class OrderingScooter {
+    private WebDriver driver;
     private static final By BUTTON_LOCATOR_IN_FOLDER = By.xpath("//button[contains(@class, 'Button_Button__ra12g')]"); //кнoпка "Закaать" в шапке
     private static final By BUTTON_LOCATOR_IN_PAGE = By.xpath(".//button[@class='Button_Button__ra12g Button_Middle__1CSJM']"); //кнoпка "Зaказать" в середине
-    private WebDriver driver;
     private static final By CLICK_BUTTON_COOKIE = By.xpath("//*[@id=\"rcc-confirm-button\"]"); //локатор для куки
     private static final By INPUT_NAME = By.xpath("//input[@placeholder='* Имя']"); //локатор для поля Имя
     private static final By INPUT_SURNAME = By.xpath("//input[@placeholder='* Фамилия']"); //локатор для поля Фамилия

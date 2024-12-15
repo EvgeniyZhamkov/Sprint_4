@@ -6,6 +6,7 @@ import org.junit.runners.Parameterized;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import pageObject.OrderingScooter;
 import static org.junit.Assert.assertTrue;
 
 @RunWith(Parameterized.class)
@@ -41,13 +42,13 @@ public class OrderingScooterTest {
 
     @Before
     public void setUp() {
-        boolean useFirefox = false; //указать false  для fireFox
-        driver = getWebDriver(useFirefox);
+        boolean useChrome = false; //указать false  для fireFox
+        driver = getWebDriver(useChrome);
         driver.get(URL);
     }
-    public WebDriver getWebDriver (boolean useFirefox){
+    public WebDriver getWebDriver (boolean useChrome){
         WebDriver driver;
-        if (useFirefox) {
+        if (useChrome) {
             driver = new ChromeDriver();
         } else {
             driver = new FirefoxDriver();
@@ -66,7 +67,7 @@ public class OrderingScooterTest {
 
     @Test
     public void testOrderWithValidData() {
-        Boolean actual = new ru.yandex.praktikum.sprint_4.OrderingScooter(driver)
+        Boolean actual = new OrderingScooter(driver)
 
                 // Ввод данных клиента
                 .customerDataForm(buttonLocation,name, surname,address,metro,phone)

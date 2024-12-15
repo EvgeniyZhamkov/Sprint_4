@@ -6,7 +6,8 @@ import org.junit.runners.Parameterized;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import pageObject.OrderingScooter;
+import pageobject.PageOrderingScooter;
+
 import static org.junit.Assert.assertTrue;
 
 @RunWith(Parameterized.class)
@@ -67,7 +68,7 @@ public class OrderingScooterTest {
 
     @Test
     public void testOrderWithValidData() {
-        Boolean actual = new OrderingScooter(driver)
+        Boolean actual = new PageOrderingScooter(driver)
 
                 // Ввод данных клиента
                 .customerDataForm(buttonLocation,name, surname,address,metro,phone)

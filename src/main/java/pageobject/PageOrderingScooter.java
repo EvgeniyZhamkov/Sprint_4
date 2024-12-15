@@ -1,4 +1,4 @@
-package pageObject;
+package pageobject;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -10,7 +10,7 @@ import java.text.SimpleDateFormat;
 
 import java.util.Calendar;
 
-public class OrderingScooter {
+public class PageOrderingScooter {
     private WebDriver driver;
     private static final By BUTTON_LOCATOR_IN_FOLDER = By.xpath("//button[contains(@class, 'Button_Button__ra12g')]"); //кнoпка "Закaать" в шапке
     private static final By BUTTON_LOCATOR_IN_PAGE = By.xpath(".//button[@class='Button_Button__ra12g Button_Middle__1CSJM']"); //кнoпка "Зaказать" в середине
@@ -31,27 +31,27 @@ public class OrderingScooter {
     private static final By BUTTON_FOR_ORDER = By.xpath("//button[contains(@class, \"Button_Button__ra12g\") and contains(@class, \"Button_Middle__1CSJM\") and text()='Заказать']"); //локатор кнопки Заказать для завершения оформления заказа
     private static final By THE_ORDER_HAS_BEEN_PLACED = By.xpath("//*[text() = 'Заказ оформлен']"); //локатор для окна Заказ оформлен
 
-    public OrderingScooter(WebDriver driver) {
+    public PageOrderingScooter(WebDriver driver) {
         this.driver = driver;
     }
-    public OrderingScooter clickCookie(){ //принять куки
+    public PageOrderingScooter clickCookie(){ //принять куки
         WebElement cookie = driver.findElement(CLICK_BUTTON_COOKIE);
         cookie.click();
         return this;
     }
 
-    public OrderingScooter clickButtonOrderInFolder() { //клик по кнопке "Заказать" в шапке стенда
+    public PageOrderingScooter clickButtonOrderInFolder() { //клик по кнопке "Заказать" в шапке стенда
         WebElement element = driver.findElement(BUTTON_LOCATOR_IN_FOLDER); //найти элемент по локатору
         element.click(); //клик по элементу
         return this;
     }
-    public OrderingScooter clickButtonOrderInPage() { //клик по кнопке "Заказать" в середине стенда
+    public PageOrderingScooter clickButtonOrderInPage() { //клик по кнопке "Заказать" в середине стенда
         WebElement element = driver.findElement(BUTTON_LOCATOR_IN_PAGE);
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element); //скролл до элемента
         element.click(); //клик по элементу
         return this;
     }
-    public OrderingScooter clickOrderButton(String buttonLocation) { //выбор по какой кнопке "Заказать" кликать
+    public PageOrderingScooter clickOrderButton(String buttonLocation) { //выбор по какой кнопке "Заказать" кликать
         if (buttonLocation.equals("header")) {
             clickButtonOrderInFolder();
         } else if (buttonLocation.equals("middle")) {
@@ -60,7 +60,7 @@ public class OrderingScooter {
         return this;
     }
 
-    public OrderingScooter clickAndInputName(String name) { //клик по полю "Имя" и ввод текста
+    public PageOrderingScooter clickAndInputName(String name) { //клик по полю "Имя" и ввод текста
         WebElement nameField = driver.findElement(INPUT_NAME);
         nameField.click();
         nameField.clear();
@@ -68,7 +68,7 @@ public class OrderingScooter {
         return this;
     }
 
-    public OrderingScooter clickAndInputSurname(String surname) { //клик по полю "Фамилия и ввод текста
+    public PageOrderingScooter clickAndInputSurname(String surname) { //клик по полю "Фамилия и ввод текста
         WebElement surnameField = driver.findElement(INPUT_SURNAME);
         surnameField.click();
         surnameField.clear();
@@ -76,14 +76,14 @@ public class OrderingScooter {
         return this;
     }
 
-    public OrderingScooter clickAndInputAdress(String address) { //клик по полю "Адрес" и ввод текста
+    public PageOrderingScooter clickAndInputAdress(String address) { //клик по полю "Адрес" и ввод текста
         WebElement addressField = driver.findElement(INPUT_ADRESS);
         addressField.click();
         addressField.clear();
         addressField.sendKeys(address);
         return this;
     }
-    public OrderingScooter clickAndSelectMetroStation(int metro) { //выбираем станцию метро
+    public PageOrderingScooter clickAndSelectMetroStation(int metro) { //выбираем станцию метро
         WebElement metroStationField = driver.findElement(INPUT_METRO_STATION);
         metroStationField.click();
         metroStationField.clear();
@@ -94,14 +94,14 @@ public class OrderingScooter {
         return this;
     }
 
-    public OrderingScooter clickAndInputPhone(String phone) { //клик по полю "Телефон" и ввод текста
+    public PageOrderingScooter clickAndInputPhone(String phone) { //клик по полю "Телефон" и ввод текста
         WebElement phoneField = driver.findElement(INPUT_PHONE);
         phoneField.click();
         phoneField.clear();
         phoneField.sendKeys(phone);
         return this;
     }
-    public OrderingScooter customerDataForm(String buttonLocation, String name, String surname, String address, int metro, String phone) {
+    public PageOrderingScooter customerDataForm(String buttonLocation, String name, String surname, String address, int metro, String phone) {
         // Заполнить последовательно поля
         clickCookie();
         clickOrderButton(buttonLocation);
@@ -114,12 +114,12 @@ public class OrderingScooter {
         return this;
     }
 
-    public OrderingScooter clickButtonFurther() { //клик по кнопку "Далее"
+    public PageOrderingScooter clickButtonFurther() { //клик по кнопку "Далее"
         driver.findElement(BUTTON_FURTHER).click();
         return this;
     }
 
-    public OrderingScooter clickInputFieldWhenToBringTheScooter(int daysToAdd) { //выбираем дату в календаре
+    public PageOrderingScooter clickInputFieldWhenToBringTheScooter(int daysToAdd) { //выбираем дату в календаре
 
         driver.findElement(INPUT_DATA).click();
 
@@ -144,7 +144,7 @@ public class OrderingScooter {
         return this;
     }
 
-    public OrderingScooter clickDdlTheRentalPeriod(String option) { //выбираем срок аренды
+    public PageOrderingScooter clickDdlTheRentalPeriod(String option) { //выбираем срок аренды
         WebElement rentalPeriod = driver.findElement(THE_RENTAL_TIME);
         rentalPeriod.click();
         // Выбор нужного значения в выпадающем списке
@@ -154,7 +154,7 @@ public class OrderingScooter {
         return this;
     }
 
-    public OrderingScooter selectCheckboxes(boolean checkboxBlack, boolean checkboxGrey) { //находим чекбоксы и выбираем их
+    public PageOrderingScooter selectCheckboxes(boolean checkboxBlack, boolean checkboxGrey) { //находим чекбоксы и выбираем их
 
         if (checkboxBlack) {
             WebElement checkboxBlackColor = driver.findElement(CHECKBOX_BLACK);
@@ -167,18 +167,18 @@ public class OrderingScooter {
         return this;
     }
 
-    public OrderingScooter setComment(String commentText) { // Находим поле "Комментарий" и кликаем по нему
+    public PageOrderingScooter setComment(String commentText) { // Находим поле "Комментарий" и кликаем по нему
         WebElement commentField = driver.findElement(INPUT_COMMENT);
         commentField.clear();
         commentField.sendKeys(commentText);
         return this;
     }
-    public OrderingScooter clickButtonOrder() { //клик по кнопке "Заказать" для оформления заказа
+    public PageOrderingScooter clickButtonOrder() { //клик по кнопке "Заказать" для оформления заказа
         WebElement buttonOrder = driver.findElement(BUTTON_FOR_ORDER);
         buttonOrder.click();
         return this;
     }
-    public OrderingScooter clickButtonYes() { //клик по кнопке "Да" во всплывающем окне оформления заказа
+    public PageOrderingScooter clickButtonYes() { //клик по кнопке "Да" во всплывающем окне оформления заказа
         WebElement buttonOrderYes = driver.findElement(BUTTON_ORDER_YES);
         buttonOrderYes.click();
         return this;
@@ -187,7 +187,7 @@ public class OrderingScooter {
         // Проверяем наличие всплывающего окна
         return driver.findElement(THE_ORDER_HAS_BEEN_PLACED).isDisplayed();
     }
-    public OrderingScooter orderDetails(int daysToAdd, String option, boolean checkboxBlack, boolean checkboxGrey, String commentText) {
+    public PageOrderingScooter orderDetails(int daysToAdd, String option, boolean checkboxBlack, boolean checkboxGrey, String commentText) {
         clickInputFieldWhenToBringTheScooter(daysToAdd);
         clickDdlTheRentalPeriod(option);
         selectCheckboxes(checkboxBlack, checkboxGrey);
